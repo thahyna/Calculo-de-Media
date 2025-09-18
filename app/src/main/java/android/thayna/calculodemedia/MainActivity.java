@@ -1,5 +1,6 @@
 package android.thayna.calculodemedia;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -41,7 +42,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void calculaMedia() {
-        double n1 = double
+        double n1 = Double.parseDouble(nota1.getText().toString());
+        double n2 = Double.parseDouble(nota2.getText().toString());
+        double n3 = Double.parseDouble(nota3.getText().toString());
+        double n4 = Double.parseDouble(nota4.getText().toString());
+
+        double media = (n1 + n2 + n3 + n4) / 4;
+        double faltas =Double.parseDouble(numeroFaltas.getText().toString());
+
+        if (media > 7){
+            if (faltas < 20) {
+                resultado.setTextColor(Color.parseColor("#437845"));
+                resultado.setText("Aluno Aprovado com média " + media);
+            }else{
+                resultado.setTextColor(Color.parseColor("#437845"));
+                resultado.setText("Excesso de Faltas " + faltas);
+            }
+        }else{
+            resultado.setTextColor(Color.parseColor("#437845"));
+            resultado.setText("Aluno Retido por média " + media);
+        }
     }
 
     private void validaCampos() {
@@ -54,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
         } else if (TextUtils.isEmpty(nota4.getText())) {
         nota4.setError("Este campo não pode estar vazio");
         }
+    }
+
+    private boolean validaCampos2(){
+        boolean
     }
 
     private void initCompotents() {
