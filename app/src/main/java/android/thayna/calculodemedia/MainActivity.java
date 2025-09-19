@@ -15,7 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText nota1, nota2, nota3, nota4, nomeroFaltas;
+    private EditText nota1, nota2, nota3, nota4, numeroFaltas;
     private Button btnCalcular;
     private TextView resultado;
     private String nome;
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         initCompotents();
 
-        btn_calcular.setOnClickListener(view->{
+        btnCalcular.setOnClickListener(view->{
             validaCampos();
             calculaMedia();
             resultado.setText("Você no botão calcular");
@@ -77,7 +77,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean validaCampos2(){
-        boolean
+        boolean camposValidados = true;
+        if(nota1.getText().toString().isEmpty()){
+            camposValidados = false;
+        }else if(nota2.getText().toString().isEmpty()){
+            camposValidados = false;
+        }else if(nota3.getText().toString().isEmpty()){
+            camposValidados = false;
+        }else if(nota4.getText().toString().isEmpty()){
+            camposValidados = false;
+        };
+
+        return camposValidados;
+    }
+
+    private boolean validaCampos3(){
+        return nota1.getText().toString().isEmpty()
+                && nota2.getText().toString().isEmpty()
+                && nota3.getText().toString().isEmpty()
+                && nota4.getText().toString().isEmpty();
     }
 
     private void initCompotents() {
@@ -85,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         nota2 = findViewById(R.id.nota2);
         nota3 = findViewById(R.id.nota3);
         nota4 = findViewById(R.id.nota4);
-        numeroFaltas = findViewById(R.id.numero_faltas);
+        numeroFaltas = findViewById(R.id.numeroFaltas);
         btnCalcular = findViewById(R.id.btn_calcular);
         resultado = findViewById(R.id.txt_resultado);
     }
